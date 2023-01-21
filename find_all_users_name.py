@@ -1,4 +1,5 @@
 from read_data import read_data
+from find_all_users_id import find_all_users_id
 
 
 def find_all_users_name(data: dict) -> list:
@@ -11,11 +12,18 @@ def find_all_users_name(data: dict) -> list:
         list: List containing all the users name.
     """
     users_name = []
+    idx = []
     for n in range(len(data['messages'])):
-        if 'actor' in data['messages'][n]:
-            users_name.append(data['messages'][n]['actor'])
-        elif 'from' in data['messages'][n]:
-            users_name.append(data['messages'][n]['from'])
+        if 'actor_id' in data['messages'][n]:
+            if not data['messages'][n]['actor_id'] in idx:
+                if 'actor' in data['messages'][n]:
+                    users_name.append(data['messages'][n]['actor'])
+                    idx.append(data['messages'][n]['actor_id'])
+        elif 'from_id' in data['messages'][n]:
+            if not data['messages'][n]['from_id'] in idx:
+                if 'from' in data['messages'][n]:
+                    users_name.append(data['messages'][n]['from'])
+                    idx.append(data['messages'][n]['from_id'])
     return users_name
 
 
