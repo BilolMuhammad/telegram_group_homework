@@ -13,7 +13,7 @@ def find_number_of_messages(data: dict) -> int:
     """
     num_messag = 0
     for n in range(len(data['messages'])):
-        if data['messages'][n]['text']:
+        if 'text' in data['messages'][n]:
             num_messag += 1
     return num_messag
 
