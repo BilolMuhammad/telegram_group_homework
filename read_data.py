@@ -14,3 +14,11 @@ def read_data(file_path: str) -> dict:
     # open file
     f = open(file_path, encoding='utf-8').read()
     return json.loads(f)
+
+
+def main():
+    print(read_data('data/result.json'))
+
+
+if __name__ == '__main__':
+    main()
