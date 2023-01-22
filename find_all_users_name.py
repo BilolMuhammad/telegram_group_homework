@@ -15,10 +15,10 @@ def find_all_users_name(data: dict) -> list:
     messages = data['messages']
     for n in range(len(messages)):
         if 'actor' in messages[n]:
-            if not messages[n]['actor'] in users_name:
+            if messages[n]['actor'] not in users_name:
                 users_name.append(messages[n]['actor'])
         if 'from' in messages[n]:
-            if not messages[n]['from'] in users_name:
+            if messages[n]['from'] not in users_name:
                 users_name.append(messages[n]['from'])
     return users_name
 
